@@ -41,6 +41,8 @@ html {
     -moz-transition: transform 0.3s, -webkit-transform 0.3s;
     -ms-transition: transform 0.3s, -webkit-transform 0.3s;
     -o-transition: transform 0.3s, -webkit-transform 0.3s;
+    overflow-y: scroll !important; 
+    padding-right: 17px;
 }
 
 .menu-wrap {
@@ -311,13 +313,13 @@ li {
     }
 }
 
-.menu-button {
+.menu-button,.menu-wrap {
     display: none;
 }
 
 @media (max-width: 767px) {
 
-    .menu-button {
+    .menu-button,.menu-wrap {
         display: block;
     }
     
