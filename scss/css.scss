@@ -1,0 +1,274 @@
+//colors
+$color_tuna_approx: #373a47;
+$color_nobel_approx: #b8b7ad;
+$color_fuzzy_wuzzy_brown_approx: #c94e50;
+$color_casper_approx: #b4bad2;
+$black_30: rgba(0, 0, 0, 0.3);
+$black_10: rgba(0, 0, 0, 0.1);
+$yellow : #ffcb08;
+$some-black: #333;
+
+
+//@extend-elements
+//original selectors
+//html, body, .container, .content-wrap
+%extend_1 {
+    overflow: hidden;
+    
+    width: 100%;
+    height: 100%;
+}
+
+
+html {
+    @extend %extend_1;overflow-y: scroll;
+}
+
+body {
+    @extend %extend_1;
+    background-color: $color_fuzzy_wuzzy_brown_approx;
+    
+}
+
+.container {
+    @extend %extend_1;
+    background:$color_fuzzy_wuzzy_brown_approx ;
+}
+
+.content-wrap {
+    @extend %extend_1;
+    
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.menu-wrap {
+    position: absolute;
+    font-weight: 700;
+    opacity: 0;
+    width: 100%;
+    background-color: $yellow ;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+
+    a {
+        color: $some-black;
+
+        &:hover {
+            color: $color_fuzzy_wuzzy_brown_approx;
+        }
+
+        &:focus {
+            color: $color_fuzzy_wuzzy_brown_approx;
+        }
+    }
+}
+
+.content {
+    position: relative;
+    background: $color_casper_approx;
+}
+
+.content::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: $black_30;
+    content: '';
+    opacity: 0;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    -webkit-transition: opacity 0.3s, -webkit-transform 0s 0.3s;
+    transition: opacity 0.3s, -webkit-transform 0s 0.3s;
+    transition: opacity 0.3s, transform 0s 0.3s;
+    transition: opacity 0.3s, transform 0s 0.3s, -webkit-transform 0s 0.3s;
+}
+
+.menu-button {
+    position: fixed;
+    z-index: 1000;
+    margin: 1em;
+    padding: 0;
+    width: 2.5em;
+    height: 2.25em;
+    border: none;
+    text-indent: 2.5em;
+    font-size: 1.5em;
+    color: transparent;
+    background: transparent;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.menu-button::before {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    bottom: 0.5em;
+    left: 0.5em;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, $color_tuna_approx), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, $color_tuna_approx), color-stop(60%, $color_tuna_approx), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, $color_tuna_approx));
+    background: linear-gradient($color_tuna_approx 20%, transparent 20%, transparent 40%, $color_tuna_approx 40%, $color_tuna_approx 60%, transparent 60%, transparent 80%, $color_tuna_approx 80%);
+    content: '';
+}
+
+.menu-top {
+    line-height: 58px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    a {
+
+        &:hover {
+            color: $some-black;
+        }
+    }
+
+    .lang {
+        display: inline-block;
+        padding: 8px 1.2em;
+        line-height: 42px;
+        width: 300px;
+
+        
+    }
+}
+
+.menu-side {
+    width: 300px;
+    li {
+        position: relative;
+    }
+   
+    ul {
+        
+        list-style: none;
+
+        padding: 0;
+        margin: 0;
+
+        ul {
+            padding-left: 1em;
+            /*display: none;*/
+
+            a {
+                font-size: 0.8rem;
+            }
+
+        }
+
+        li {
+
+            i {
+                float:right;
+            }
+        }
+
+    }
+
+    a {
+        display: block;
+        padding: 1.2em;
+        border-bottom: 1px solid $black_10;
+
+        &:first-child {
+            border-top: 1px solid $black_10;
+        }
+    }
+
+
+    .tree-empty {
+        .toggler {
+            display: none;
+        }
+    }
+
+    .toggler {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        text-align: right;
+        line-height: 56px;
+        font-size: 1.3rem;
+    }
+
+    .toggler:before {
+        color: $some-black
+    }
+    
+}
+
+.icon-list {
+    display: inline-block;
+    font-size: 1.25em;
+
+    a {
+        margin: 0 1em 0 0;
+        padding: 0;
+    }
+}
+
+@media screen and(max-width: 32em) {
+    .icon-list {
+        padding-left: 1em;
+    }
+}
+
+.show-menu {
+    .menu-wrap {
+        opacity: 1;
+    }
+
+    .content-wrap {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        -webkit-transform: translate3d(300px, 60px, 0);
+                transform: translate3d(300px, 60px, 0);
+    }
+
+    .menu-button {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        -webkit-transform: translate3d(300px, 60px, 0);
+                transform: translate3d(300px, 60px, 0);
+    }
+
+    .content::before {
+        opacity: 1;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        -webkit-transition: opacity 0.3s;
+        transition: opacity 0.3s;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+@media screen and (max-width: 576px){
+    
+}
